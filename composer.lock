@@ -4,58 +4,9 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "9ccbdb37b92dd28334d1b1cf9de1facd",
-    "content-hash": "876f9772429d86ddc02549f9189d05b5",
+    "hash": "0bf0b54e80c7d336ef6e9cba7a4aa0c3",
+    "content-hash": "8c2aab4418495204b02bf21a5e292d18",
     "packages": [
-        {
-            "name": "dbtlr/silex-doctrine-migrations",
-            "version": "dev-develop",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/xearts/silex-doctrine-migrations.git",
-                "reference": "a7e2f674ee6dbde56643122dd56d7e52c63df584"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/xearts/silex-doctrine-migrations/zipball/a7e2f674ee6dbde56643122dd56d7e52c63df584",
-                "reference": "a7e2f674ee6dbde56643122dd56d7e52c63df584",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/dbal": "~2.5",
-                "doctrine/migrations": "^1.4",
-                "doctrine/orm": "~2.5",
-                "knplabs/console-service-provider": "^2.0",
-                "php": ">=5.5.9",
-                "silex/silex": "~2.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Dbtlr\\MigrationProvider\\": "src/"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Drew Butler",
-                    "homepage": "http://dbtlr.com"
-                }
-            ],
-            "description": "Doctrine migration service provider for Silex",
-            "homepage": "http://github.com/dbtlr/silex-doctrine-migrations",
-            "keywords": [
-                "doctrine2",
-                "migration",
-                "silex"
-            ],
-            "support": {
-                "source": "https://github.com/xearts/silex-doctrine-migrations/tree/develop"
-            },
-            "time": "2016-07-19 08:51:31"
-        },
         {
             "name": "dflydev/doctrine-orm-service-provider",
             "version": "v2.0.1",
@@ -3061,9 +3012,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "dbtlr/silex-doctrine-migrations": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

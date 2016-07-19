@@ -1,7 +1,6 @@
 <?php
 namespace Xearts\SilexBase;
 
-use Dbtlr\MigrationProvider\Provider\MigrationServiceProvider;
 use Dflydev\Provider\DoctrineOrm\DoctrineOrmServiceProvider;
 use Knp\Provider\ConsoleServiceProvider;
 use Silex\Application as BaseApplication;
@@ -27,6 +26,7 @@ use Silex\Provider\VarDumperServiceProvider;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Translation\Loader\YamlFileLoader;
 use Symfony\Component\Yaml\Yaml;
+use Xearts\SilexBase\Provider\DoctrineMigrationProvider;
 use Xearts\SilexBase\Provider\DoctrineOrmCommandProvider;
 
 
@@ -202,7 +202,6 @@ class Application extends BaseApplication
                 ),
             ),
         ));
-        $this->register(new DoctrineOrmCommandProvider());
     }
 
     protected function initConsole()
@@ -225,9 +224,10 @@ class Application extends BaseApplication
             ? $this['config']['db.migrations.path']
             : $this['app_dir'].'/Resources/migrations'
         ;
-        $this->register(new MigrationServiceProvider(), array(
+        $this->register(new DoctrineMigrationProvider(), array(
             'db.migrations.path' => $migrationPath,
         ));
+        $this->register(new DoctrineOrmCommandProvider());
 
     }
 

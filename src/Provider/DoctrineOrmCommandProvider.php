@@ -21,11 +21,6 @@ class DoctrineOrmCommandProvider implements ServiceProviderInterface
      */
     public function register(Container $app)
     {
-        $app['db.migrations.namespace'] = 'DoctrineMigrations';
-        $app['db.migrations.path'] = null;
-        $app['db.migrations.table_name'] = null;
-        $app['db.migrations.name'] = null;
-
         $app['dispatcher']->addListener(ConsoleEvents::INIT, function (ConsoleEvent $event) use ($app) {
             $application = $event->getApplication();
 

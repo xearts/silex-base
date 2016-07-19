@@ -19,18 +19,11 @@
         "doctrine/dbal": "~2.5",
         "symfony/var-dumper": "^3.1",
         "knplabs/console-service-provider": "^2.0",
-        "doctrine/migrations": "^1.4",
-        "dbtlr/silex-doctrine-migrations": "dev-develop"
+        "doctrine/migrations": "^1.4"
     },
     "require-dev": {
         "sorien/silex-pimple-dumper": "~2.0"
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/xearts/silex-doctrine-migrations"
-        }
-    ],
     "autoload": {
         "psr-4": {
             "Xearts\\SilexBase\\": "src/"
