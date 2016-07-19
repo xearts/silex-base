@@ -1,12 +1,7 @@
 <?php
 
-$loader = require_once __DIR__.'/../vendor/autoload.php';
-\Doctrine\Common\Annotations\AnnotationRegistry::registerLoader(array($loader, 'loadClass'));
+$app = require __DIR__.'/../app/bootstrap.php';
 
-$app = new Xearts\SilexBase\Application([
-    'app_dir' => __DIR__.'/../app',
-    'src_dir' => __DIR__.'/../src',
-]);
 
 $app['debug'] = true;
 $app->register(new \Sorien\Provider\PimpleDumpProvider());

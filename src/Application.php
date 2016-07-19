@@ -1,7 +1,9 @@
 <?php
 namespace Xearts\SilexBase;
 
+use Dbtlr\MigrationProvider\Provider\MigrationServiceProvider;
 use Dflydev\Provider\DoctrineOrm\DoctrineOrmServiceProvider;
+use Knp\Provider\ConsoleServiceProvider;
 use Silex\Application as BaseApplication;
 use Silex\Application\FormTrait;
 use Silex\Application\MonologTrait;
@@ -25,6 +27,7 @@ use Silex\Provider\VarDumperServiceProvider;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Translation\Loader\YamlFileLoader;
 use Symfony\Component\Yaml\Yaml;
+use Xearts\SilexBase\Provider\DoctrineOrmCommandProvider;
 
 
 class Application extends BaseApplication
@@ -56,6 +59,7 @@ class Application extends BaseApplication
         $this->initTranslation();
         $this->initForm();
         $this->initDb();
+        $this->initConsole();
         $this->initOther();
         $this->initController();
 
@@ -130,6 +134,13 @@ class Application extends BaseApplication
             }
         }
 
+        $mailConfig = isset($this['config']['mail'])
+            ? $this['config']['mail']
+            : array(
+
+            )
+        ;
+
         $this->register(new SwiftmailerServiceProvider());
         $this['swiftmailer.options'] = $this['config']['mail'];
 
@@ -191,6 +202,33 @@ class Application extends BaseApplication
                 ),
             ),
         ));
+        $this->register(new DoctrineOrmCommandProvider());
+    }
+
+    protected function initConsole()
+    {
+        $config = isset($this['config']['console'])
+            ? $this['config']['console']
+            : array(
+                'name' => 'MyApplication',
+                'version' => '1.0.0',
+            )
+        ;
+        $this->register(new ConsoleServiceProvider(), array(
+            'console.name' => $config['name'],
+            'console.version'=> $config['version'],
+            'console.project_directory' => $this['app_dir']
+        ));
+
+
+        $migrationPath = isset($this['config']['db.migrations.path'])
+            ? $this['config']['db.migrations.path']
+            : $this['app_dir'].'/Resources/migrations'
+        ;
+        $this->register(new MigrationServiceProvider(), array(
+            'db.migrations.path' => $migrationPath,
+        ));
+
     }
 
     protected function initOther()
