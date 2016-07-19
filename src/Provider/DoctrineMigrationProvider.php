@@ -50,7 +50,6 @@ class DoctrineMigrationProvider implements ServiceProviderInterface
                 $config->setMigrationsTableName($app['db.migrations.table_name']);
             }
 
-            dump($app['db.migrations.path']);
             $commands = array(
                 new Command\DiffCommand(),
                 new Command\ExecuteCommand(),

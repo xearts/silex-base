@@ -6,6 +6,10 @@ db.options:
   password: root
   charset: utf8
 
+mail:
+    transport: mail
+    charset_iso_2022_jp: true
+
 entity:
   namespace: "Xearts\\SilexBase\\Entity"
   path: "/Entity"
