@@ -16,12 +16,21 @@
         "doctrine/cache": "^1.6",
         "egulias/email-validator": "^2.1",
         "dflydev/doctrine-orm-service-provider": "^2.0",
-        "doctrine/dbal": "~2.2",
-        "symfony/var-dumper": "^3.1"
+        "doctrine/dbal": "~2.5",
+        "symfony/var-dumper": "^3.1",
+        "knplabs/console-service-provider": "^2.0",
+        "doctrine/migrations": "^1.4",
+        "dbtlr/silex-doctrine-migrations": "dev-develop"
     },
     "require-dev": {
         "sorien/silex-pimple-dumper": "~2.0"
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/xearts/silex-doctrine-migrations"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "Xearts\\SilexBase\\": "src/"

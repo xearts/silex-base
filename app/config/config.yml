@@ -9,3 +9,7 @@ db.options:
 entity:
   namespace: "Xearts\\SilexBase\\Entity"
   path: "/Entity"
+
+console:
+  name: "MyApplication"
+  version: 1.0.0
