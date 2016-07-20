@@ -167,7 +167,7 @@ class Application extends BaseApplication
         $this->extend('translator', function($translator, $app) {
             $translator->addLoader('yaml', new YamlFileLoader());
 
-            $translator->addResource('yaml', $this['app_dir'].'/Resouces/locales/ja.yml', 'ja');
+            $translator->addResource('yaml', $this['app_dir'].'/Resources/locales/ja.yml', 'ja');
 
             return $translator;
         });
