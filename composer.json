@@ -20,7 +20,8 @@
         "symfony/var-dumper": "^3.1",
         "knplabs/console-service-provider": "^2.0",
         "doctrine/migrations": "^1.4",
-        "symfony/doctrine-bridge": "^3.1"
+        "symfony/doctrine-bridge": "^3.1",
+        "symfony/serializer": "^3.1"
     },
     "require-dev": {
         "sorien/silex-pimple-dumper": "~2.0"

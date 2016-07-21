@@ -2,6 +2,7 @@
 namespace Xearts\SilexBase;
 
 use Dflydev\Provider\DoctrineOrm\DoctrineOrmServiceProvider;
+use Doctrine\Common\Annotations\AnnotationReader;
 use Knp\Provider\ConsoleServiceProvider;
 use Silex\Application as BaseApplication;
 use Silex\Application\FormTrait;
@@ -16,6 +17,7 @@ use Silex\Provider\DoctrineServiceProvider;
 use Silex\Provider\FormServiceProvider;
 use Silex\Provider\LocaleServiceProvider;
 use Silex\Provider\MonologServiceProvider;
+use Silex\Provider\SerializerServiceProvider;
 use Silex\Provider\ServiceControllerServiceProvider;
 use Silex\Provider\SessionServiceProvider;
 use Silex\Provider\SwiftmailerServiceProvider;
@@ -25,6 +27,9 @@ use Silex\Provider\ValidatorServiceProvider;
 use Silex\Provider\VarDumperServiceProvider;
 use Symfony\Bridge\Doctrine\Form\DoctrineOrmExtension;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactory;
+use Symfony\Component\Serializer\Mapping\Loader\AnnotationLoader;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Translation\Loader\YamlFileLoader;
 use Symfony\Component\Yaml\Yaml;
 use Xearts\SilexBase\Doctrine\DoctrineBridgeManagerRegistry;
@@ -246,6 +251,14 @@ class Application extends BaseApplication
 
     protected function initOther()
     {
+        $this->register(new SerializerServiceProvider());
+        $this['serializer.normalizers'] = $this->extend('serializer.normalizers', function ($normalizers, $app) {
+
+            $classMetadataFactory = new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()));
+
+            array_unshift($normalizers, new ObjectNormalizer($classMetadataFactory));
+            return $normalizers;
+        });
         $this->register(new VarDumperServiceProvider());
     }
 

@@ -8,7 +8,13 @@ $app->register(new \Sorien\Provider\PimpleDumpProvider());
 
 $app->get('/', function () use ($app) {
 
-    var_dump($app['orm.em']->getRepository(\Xearts\SilexBase\Entity\Test::class)->findAll());
+    $tests = $app['orm.em']->getRepository(\Xearts\SilexBase\Entity\Test::class)->findAll();
+
+
+    /** @var Symfony\Component\Serializer\Serializer $serializer */
+    $serializer = $app['serializer'];
+
+    var_dump($serializer->normalize($tests, 'json', array('groups' => array('test', 'hoge'))));
 
     return $app->render('index.html.twig');
 });

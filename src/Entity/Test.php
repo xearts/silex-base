@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\GeneratedValue;
 use Doctrine\ORM\Mapping\Id;
 use Doctrine\ORM\Mapping\Table;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 
 /**
@@ -40,6 +41,7 @@ class Test
     }
 
     /**
+     * @Groups({"hoge"})
      * @return string
      */
     public function getName()
