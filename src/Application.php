@@ -23,9 +23,11 @@ use Silex\Provider\TranslationServiceProvider;
 use Silex\Provider\TwigServiceProvider;
 use Silex\Provider\ValidatorServiceProvider;
 use Silex\Provider\VarDumperServiceProvider;
+use Symfony\Bridge\Doctrine\Form\DoctrineOrmExtension;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Translation\Loader\YamlFileLoader;
 use Symfony\Component\Yaml\Yaml;
+use Xearts\SilexBase\Doctrine\DoctrineBridgeManagerRegistry;
 use Xearts\SilexBase\Provider\DoctrineMigrationProvider;
 use Xearts\SilexBase\Provider\DoctrineOrmCommandProvider;
 
@@ -178,6 +180,17 @@ class Application extends BaseApplication
         $this->register(new FormServiceProvider());
         $this->register(new CsrfServiceProvider());
         $this->register(new ValidatorServiceProvider());
+
+        // Doctrine Brigde for form extension
+        $this['form.extensions'] = $this->extend('form.extensions', function ($extensions, $app)  {
+            $manager = new DoctrineBridgeManagerRegistry(
+                null, array(), array('default'), null, null, '\Doctrine\ORM\Proxy\Proxy'
+            );
+            $manager->setContainer($app);
+            $extensions[] = new DoctrineOrmExtension($manager);
+            return $extensions;
+        });
+
     }
 
 
