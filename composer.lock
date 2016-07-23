@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "24bb7311140489f99e97dfe10cec5413",
-    "content-hash": "19f0af89cfb8a8f4fa9579b8d85bef01",
+    "hash": "c81577dc9c167868f5fa4d3b8dda145e",
+    "content-hash": "aebca963a774a311542a5ec698e38aac",
     "packages": [
         {
             "name": "dflydev/doctrine-orm-service-provider",
@@ -738,26 +738,24 @@
         },
         {
             "name": "egulias/email-validator",
-            "version": "2.1.0",
+            "version": "1.2.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/egulias/EmailValidator.git",
-                "reference": "19811e00829958f06d9bfbfeb0d0e6b7aaff3767"
+                "reference": "b8bb147f46cc9790326ce2440a13be06cc5a63bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/19811e00829958f06d9bfbfeb0d0e6b7aaff3767",
-                "reference": "19811e00829958f06d9bfbfeb0d0e6b7aaff3767",
+                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/b8bb147f46cc9790326ce2440a13be06cc5a63bb",
+                "reference": "b8bb147f46cc9790326ce2440a13be06cc5a63bb",
                 "shasum": ""
             },
             "require": {
                 "doctrine/lexer": "^1.0.1",
-                "php": ">= 5.5"
+                "php": ">= 5.3.3"
             },
             "require-dev": {
-                "dominicsayers/isemail": "dev-master",
-                "phpunit/phpunit": "^4.8.0",
-                "satooshi/php-coveralls": "dev-master"
+                "phpunit/phpunit": "^4.8.24"
             },
             "type": "library",
             "extra": {
@@ -766,8 +764,8 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Egulias\\EmailValidator\\": "EmailValidator"
+                "psr-0": {
+                    "Egulias\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -779,7 +777,7 @@
                     "name": "Eduardo Gulias Davis"
                 }
             ],
-            "description": "A library for validating emails against several RFCs",
+            "description": "A library for validating emails",
             "homepage": "https://github.com/egulias/EmailValidator",
             "keywords": [
                 "email",
@@ -788,7 +786,7 @@
                 "validation",
                 "validator"
             ],
-            "time": "2016-07-12 13:22:10"
+            "time": "2016-07-03 21:52:18"
         },
         {
             "name": "knplabs/console-service-provider",
