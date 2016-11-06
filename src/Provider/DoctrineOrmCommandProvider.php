@@ -6,10 +6,12 @@ use Knp\Console\ConsoleEvent;
 use Knp\Console\ConsoleEvents;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
+use Silex\Api\BootableProviderInterface;
+use Silex\Application;
 use Symfony\Component\Console\Helper\QuestionHelper;
 
 
-class DoctrineOrmCommandProvider implements ServiceProviderInterface
+class DoctrineOrmCommandProvider implements ServiceProviderInterface, BootableProviderInterface
 {
     /**
      * Registers services on the given container.
@@ -20,6 +22,19 @@ class DoctrineOrmCommandProvider implements ServiceProviderInterface
      * @param Container $app A container instance
      */
     public function register(Container $app)
+    {
+    }
+
+    /**
+     * Bootstraps the application.
+     *
+     * This method is called after all services are registered
+     * and should be used for "dynamic" configuration (whenever
+     * a service must be requested).
+     *
+     * @param Application $app
+     */
+    public function boot(Application $app)
     {
         $app['dispatcher']->addListener(ConsoleEvents::INIT, function (ConsoleEvent $event) use ($app) {
             $application = $event->getApplication();

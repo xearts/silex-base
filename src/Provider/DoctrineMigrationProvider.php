@@ -5,12 +5,13 @@ use Doctrine\DBAL\Migrations\Configuration\Configuration;
 use Doctrine\DBAL\Migrations\Tools\Console\Command;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
+use Silex\Api\BootableProviderInterface;
 use Silex\Application;
 use Knp\Console\ConsoleEvents;
 use Knp\Console\ConsoleEvent;
 use Symfony\Component\Console\Helper\QuestionHelper;
 
-class DoctrineMigrationProvider implements ServiceProviderInterface
+class DoctrineMigrationProvider implements ServiceProviderInterface, BootableProviderInterface
 {
     /**
      * @param Container $app
@@ -22,6 +23,13 @@ class DoctrineMigrationProvider implements ServiceProviderInterface
         $app['db.migrations.table_name'] = null;
         $app['db.migrations.name'] = null;
 
+    }
+
+    /**
+     * @param Application $app
+     */
+    public function boot(Application $app)
+    {
         $app['dispatcher']->addListener(ConsoleEvents::INIT, function (ConsoleEvent $event) use ($app) {
             $application = $event->getApplication();
 
@@ -65,13 +73,6 @@ class DoctrineMigrationProvider implements ServiceProviderInterface
                 $application->add($command);
             }
         });
-    }
-
-    /**
-     * @param Application $app
-     */
-    public function boot(Application $app)
-    {
 
     }
 }
